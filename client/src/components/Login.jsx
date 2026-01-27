@@ -18,17 +18,10 @@ const Login = () => {
 
   return (
     <div className={`login-container ${isLoaded ? "loaded" : ""}`}>
-      <div className="background-animation"></div>
-      <div className="floating-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-      </div>
-      
       <div className={`login-card ${isLoaded ? "slide-up" : ""}`}>
         <div className="card-header">
           <h2 className="title">Expense Tracker</h2>
-          <p className="subtitle">Login in to continue</p>
+          <p className="subtitle">Log in to continue</p>
         </div>
 
         <form onSubmit={handleLogin} className="login-form">
@@ -56,15 +49,13 @@ const Login = () => {
             <label className="input-label">Password</label>
           </div>
 
-          {/* Changed from "Sign In" to "Login" */}
           <button type="submit" className="login-button">
             <span>Login</span>
-            <div className="button-shimmer"></div>
           </button>
         </form>
 
         <div className="footer-text">
-          <p>Don't have an account? <Link to="/Register">Register</Link></p>
+          <p>Don't have an account? <Link to="/register">Register</Link></p>
         </div>
       </div>
     </div>
