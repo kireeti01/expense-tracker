@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -63,7 +64,7 @@ const Login = () => {
         </form>
 
         <div className="footer-text">
-          <p>Don't have an account? <a href="#">Register</a></p>
+          <p>Don't have an account? <Link to="/Register">Register</Link></p>
         </div>
       </div>
     </div>
