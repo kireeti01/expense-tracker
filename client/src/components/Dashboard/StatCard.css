@@ -1,0 +1,103 @@
+.stat-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-primary {
+  border-top: 4px solid var(--primary-color);
+}
+
+.stat-success {
+  border-top: 4px solid var(--success-color);
+}
+
+.stat-error {
+  border-top: 4px solid var(--error-color);
+}
+
+.stat-warning {
+  border-top: 4px solid var(--warning-color);
+}
+
+.stat-info {
+  border-top: 4px solid var(--info-color);
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.stat-primary .stat-icon {
+  background-color: var(--primary-color);
+}
+
+.stat-success .stat-icon {
+  background-color: var(--success-color);
+}
+
+.stat-error .stat-icon {
+  background-color: var(--error-color);
+}
+
+.stat-warning .stat-icon {
+  background-color: var(--warning-color);
+}
+
+.stat-info .stat-icon {
+  background-color: var(--info-color);
+}
+
+.trend-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.trend-indicator.up {
+  background-color: var(--success-light);
+  color: var(--success-color);
+}
+
+.trend-indicator.down {
+  background-color: var(--error-light);
+  color: var(--error-color);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.stat-title {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}

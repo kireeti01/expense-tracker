@@ -1,0 +1,239 @@
+/* src/pages/Register.css */
+.register-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.register-card {
+  flex: 1;
+  max-width: 480px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--card-bg);
+}
+
+.register-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.logo-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.register-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.password-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.strength-meter {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  height: 6px;
+}
+
+.strength-bar {
+  flex: 1;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.strength-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.password-requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--bg-hover);
+  border-radius: var(--border-radius);
+  margin-top: 0.5rem;
+}
+
+.requirement {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.requirement-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.requirement-icon.met {
+  color: var(--success-color);
+}
+
+.requirement-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.requirement-text.met {
+  color: var(--text-primary);
+  text-decoration: line-through;
+}
+
+.terms-agreement {
+  margin: 0.5rem 0;
+}
+
+.terms-agreement .checkbox {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.terms-link {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.register-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.login-link {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.register-illustration {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, var(--success-light) 0%, var(--bg-color) 100%);
+}
+
+.illustration-content {
+  max-width: 480px;
+}
+
+.illustration-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.illustration-text {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.benefit-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+}
+
+.benefit h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.benefit p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .register-illustration {
+    display: none;
+  }
+  
+  .register-card {
+    max-width: 100%;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    padding: 1.5rem;
+  }
+}
