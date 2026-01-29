@@ -32,7 +32,7 @@
   width: 56px;
   height: 56px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,51 +138,7 @@
 
 .terms-link {
   color: var(--primary-color);
-  text-decoration: none;
   font-weight: 500;
-}
-
-.terms-link:hover {
-  text-decoration: underline;
-}
-
-.social-register {
-  margin-top: 1rem;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  margin: 1.5rem 0;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.divider::before {
-  margin-right: 1rem;
-}
-
-.divider::after {
-  margin-left: 1rem;
-}
-
-.social-buttons {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 0.5rem;
 }
 
 .register-footer {
@@ -196,14 +152,7 @@
 
 .login-link {
   color: var(--primary-color);
-  text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.login-link:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
 }
 
 .register-illustration {
@@ -286,9 +235,5 @@
 @media (max-width: 480px) {
   .register-card {
     padding: 1.5rem;
-  }
-  
-  .social-buttons {
-    flex-direction: column;
   }
 }
