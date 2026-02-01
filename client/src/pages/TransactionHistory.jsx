@@ -29,22 +29,49 @@ function TransactionHistory() {
           onChange={(e) => setFilter(e.target.value)}
           style={{ padding: '10px', borderRadius: '10px', border: 'none' }}
         />
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} style={{ padding: '10px', borderRadius: '10px', border: 'none' }}>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          style={{ padding: '10px', borderRadius: '10px', border: 'none' }}
+        >
           <option value="date">Sort by Date</option>
           <option value="amount">Sort by Amount</option>
         </select>
-        <Link to="/add-transaction" className="btn">Add Transaction</Link>
+        <Link to="/add-transaction" className="btn" style={{ textDecoration: 'none' }}>
+          Add Transaction
+        </Link>
       </div>
       <div className="card">
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {filteredTransactions.map(t => (
-            <li key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 0', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
+            <li
+              key={t.id}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '10px 0',
+                borderBottom: '1px solid rgba(255,255,255,0.2)',
+              }}
+            >
               <div>
                 <strong>{t.description}</strong> - {t.category} - ₹{t.amount} ({t.date})
               </div>
               <div>
-                <Link to={`/edit-transaction/${t.id}`} className="btn" style={{ marginRight: '10px' }}>Edit</Link>
-                <button onClick={() => deleteTransaction(t.id)} className="btn" style={{ background: '#ff5252' }}>Delete</button>
+                <Link
+                  to={`/edit-transaction/${t.id}`}
+                  className="btn"
+                  style={{ marginRight: '10px', textDecoration: 'none' }}
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => deleteTransaction(t.id)}
+                  className="btn"
+                  style={{ background: '#ff5252', textDecoration: 'none' }}
+                >
+                  Delete
+                </button>
               </div>
             </li>
           ))}

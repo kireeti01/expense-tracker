@@ -1,116 +1,247 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useExpense } from "../contexts/ExpenseContext.jsx";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   BarChart,
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
   PieChart,
   Pie,
   Cell,
-  ResponsiveContainer
-} from "recharts";
-import { motion } from "framer-motion";
+  Legend,
+} from 'recharts';
 
-function Dashboard() {
-  const { transactions } = useExpense();
+const COLORS = {
+  Food: '#4dabf7',
+  Transport: '#63e6be',
+  Shopping: '#b197fc',
+  Bills: '#ff8787',
+  Entertainment: '#ffa94d',
+};
 
-  const totalIncome = transactions
-    .filter(t => t.type === "income")
-    .reduce((sum, t) => sum + t.amount, 0);
+const chartData = [
+  { name: 'Food', value: 4000 },
+  { name: 'Transport', value: 2500 },
+  { name: 'Shopping', value: 3000 },
+  { name: 'Bills', value: 2000 },
+  { name: 'Entertainment', value: 1500 },
+];
 
-  const totalExpenses = transactions
-    .filter(t => t.type === "expense")
-    .reduce((sum, t) => sum + t.amount, 0);
+const transactions = [
+  {
+    id: 1,
+    title: 'Groceries',
+    category: 'Food',
+    amount: 1200,
+    date: '2026-01-28',
+  },
+  {
+    id: 2,
+    title: 'Bus Pass',
+    category: 'Transport',
+    amount: 500,
+    date: '2026-01-27',
+  },
+  {
+    id: 3,
+    title: 'Netflix',
+    category: 'Entertainment',
+    amount: 799,
+    date: '2026-01-26',
+  },
+  {
+    id: 4,
+    title: 'Electricity Bill',
+    category: 'Bills',
+    amount: 2200,
+    date: '2026-01-25',
+  },
+];
 
-  const balance = totalIncome - totalExpenses;
-
-  const recentTransactions = transactions.slice(-5).reverse();
-
-  const categoryData = transactions
-    .filter(t => t.type === "expense")
-    .reduce((acc, t) => {
-      acc[t.category] = (acc[t.category] || 0) + t.amount;
-      return acc;
-    }, {});
-
-  const chartData = Object.entries(categoryData).map(
-    ([category, amount]) => ({ category, amount })
-  );
-
-  const colors = ["#8884d8", "#82ca9d", "#ffc658", "#ff7c7c"];
-
+const Dashboard = () => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <h2>Dashboard</h2>
+    <div
+      style={{
+        minHeight: '100vh',
+        backgroundColor: '#1d1e22',
+        padding: '2rem',
+        color: '#d4d4dc',
+      }}
+    >
+      <h1 style={{ marginBottom: '2rem', color: '#feda6a' }}>
+        Dashboard
+      </h1>
 
-      {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 20 }}>
-        <div className="card">
-          <h3>Total Income</h3>
-          <p>₹{totalIncome}</p>
-        </div>
+      {/* 🔹 Recent Transactions */}
+      <div
+        style={{
+          backgroundColor: '#393f4d',
+          borderRadius: '16px',
+          padding: '1.5rem',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+          marginBottom: '2.5rem',
+        }}
+      >
+        <h3 style={{ color: '#feda6a', marginBottom: '1rem' }}>
+          Recent Transactions
+        </h3>
 
-        <div className="card">
-          <h3>Total Expenses</h3>
-          <p>₹{totalExpenses}</p>
-        </div>
+        <div style={{ maxHeight: '260px', overflowY: 'auto' }}>
+          {transactions.map((tx) => (
+            <div
+              key={tx.id}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '0.8rem 0',
+                borderBottom: '1px solid #4f5565',
+              }}
+            >
+              <div>
+                <div style={{ fontWeight: 600 }}>{tx.title}</div>
+                <div style={{ fontSize: '0.85rem', color: '#9aa0b4' }}>
+                  {tx.date}
+                </div>
+              </div>
 
-        <div className="card">
-          <h3>Balance</h3>
-          <p style={{ color: balance >= 0 ? "green" : "red" }}>
-            ₹{balance}
-          </p>
-        </div>
-      </div>
+              <div style={{ textAlign: 'right' }}>
+                <span
+                  style={{
+                    backgroundColor: COLORS[tx.category],
+                    color: '#1d1e22',
+                    padding: '4px 10px',
+                    borderRadius: '12px',
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    marginRight: '12px',
+                  }}
+                >
+                  {tx.category}
+                </span>
 
-      {/* Recent */}
-      <div className="card" style={{ marginTop: 20 }}>
-        <h3>Recent Transactions</h3>
-        <ul>
-          {recentTransactions.map(t => (
-            <li key={t.id}>
-              {t.description} – ₹{t.amount}
-            </li>
+                <span style={{ fontWeight: 700 }}>
+                  ₹{tx.amount}
+                </span>
+              </div>
+            </div>
           ))}
-        </ul>
-        <Link to="/transactions" className="btn">View All</Link>
+        </div>
+
+        {/* 🔹 View All Button */}
+        <div style={{ marginTop: '1.5rem', textAlign: 'right' }}>
+          <Link
+            to="/transactions"
+            style={{
+              backgroundColor: '#feda6a',
+              color: '#1d1e22',
+              padding: '10px 18px',
+              borderRadius: '12px',
+              fontWeight: 700,
+              textDecoration: 'none',
+              display: 'inline-block',
+            }}
+          >
+            View All
+          </Link>
+        </div>
       </div>
 
-      {/* Charts */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(350px,1fr))", gap: 20, marginTop: 20 }}>
-        <div className="card">
-          <h3>Expenses by Category</h3>
-          <ResponsiveContainer width="100%" height={250}>
+      {/* 🔹 Charts Section */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2rem',
+        }}
+      >
+        {/* Bar Chart */}
+        <div
+          style={{
+            backgroundColor: '#393f4d',
+            borderRadius: '16px',
+            padding: '1.5rem',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+          }}
+        >
+          <h3 style={{ color: '#feda6a', marginBottom: '1rem' }}>
+            Expenses by Category
+          </h3>
+
+          <ResponsiveContainer width="100%" height={280}>
             <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="category" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="amount" fill="#8884d8" />
+              <XAxis dataKey="name" stroke="#d4d4dc" />
+              <YAxis stroke="#d4d4dc" />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#1d1e22',
+                  borderRadius: '10px',
+                  border: 'none',
+                }}
+                labelStyle={{ color: '#ffffff' }}
+                itemStyle={{ color: '#ffffff' }}
+              />
+              <Bar dataKey="value">
+                {chartData.map((entry, index) => (
+                  <Cell key={index} fill={COLORS[entry.name]} />
+                ))}
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="card">
-          <h3>Expense Breakdown</h3>
-          <ResponsiveContainer width="100%" height={250}>
+        {/* Pie Chart */}
+        <div
+          style={{
+            backgroundColor: '#393f4d',
+            borderRadius: '16px',
+            padding: '1.5rem',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+          }}
+        >
+          <h3 style={{ color: '#feda6a', marginBottom: '1rem' }}>
+            Expense Breakdown
+          </h3>
+
+          <ResponsiveContainer width="100%" height={280}>
             <PieChart>
-              <Pie data={chartData} dataKey="amount" nameKey="category" outerRadius={80}>
-                {chartData.map((_, i) => (
-                  <Cell key={i} fill={colors[i % colors.length]} />
+              <Pie
+                data={chartData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={95}
+                label
+              >
+                {chartData.map((entry, index) => (
+                  <Cell key={index} fill={COLORS[entry.name]} />
                 ))}
               </Pie>
-              <Tooltip />
+
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#1d1e22',
+                  borderRadius: '10px',
+                  border: 'none',
+                }}
+                labelStyle={{ color: '#ffffff' }}
+                itemStyle={{ color: '#ffffff' }}
+              />
+
+              <Legend
+                formatter={(value) => (
+                  <span style={{ color: '#d4d4dc' }}>{value}</span>
+                )}
+              />
             </PieChart>
           </ResponsiveContainer>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
-}
+};
 
 export default Dashboard;

@@ -28,24 +28,51 @@ function AddTransaction() {
           </div>
           <div className="form-group">
             <label>Amount (₹)</label>
-            <input type="number" value={form.amount} onChange={(e) => setForm({ ...form, amount: e.target.value })} required />
+            <input
+              type="number"
+              value={form.amount}
+              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+              required
+            />
           </div>
           <div className="form-group">
             <label>Description</label>
-            <input type="text" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} required />
+            <input
+              type="text"
+              value={form.description}
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
+              required
+            />
           </div>
           <div className="form-group">
             <label>Category</label>
-            <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} required>
+            <select
+              value={form.category}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
+              required
+            >
               <option value="">Select Category</option>
-              {categories.map(c => <option key={c} value={c}>{c}</option>)}
+              {categories.map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
             </select>
           </div>
           <div className="form-group">
             <label>Date</label>
-            <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} required />
+            <input
+              type="date"
+              value={form.date}
+              onChange={(e) => setForm({ ...form, date: e.target.value })}
+              required
+            />
           </div>
-          <button type="submit" className="btn">Add Transaction</button>
+          <button
+            type="submit"
+            className="btn"
+            style={{ textDecoration: 'none' }} // Removes underline from button text
+          >
+            Add Transaction
+          </button>
         </form>
       </div>
     </motion.div>
